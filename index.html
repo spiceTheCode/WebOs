@@ -4,107 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T2OS</title>
-    <style>
-        @font-face {
-            font-family: 'Caslon Antique';
-            src: url('fonts/CaslonAntique.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Caslon Antique';
-            src: url('fonts/CaslonAntique-Bold.ttf') format('truetype');
-            font-weight: bold;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Caslon Antique';
-            src: url('fonts/CaslonAntique-Italic.ttf') format('truetype');
-            font-weight: normal;
-            font-style: italic;
-        }
-
-        @font-face {
-            font-family: 'Caslon Antique';
-            src: url('fonts/CaslonAntique-BoldItalic.ttf') format('truetype');
-            font-weight: bold;
-            font-style: italic;
-        }
-        .barText{
-            background-color: rgba(255, 255, 255, 0.844);
-            padding: 10px;
-            border-radius: 16px;
-            font-size: small;
-        }
-    </style>
+    <title>OLDOS</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body
-    style="background-color: burlywood; font-family: 'Caslon Antique', monospace;font-weight: normal;font-style: normal; background-size:cover; height: 100vh; background-image: url(backgeound.jpg);">
-    <div style="display: flex; justify-content: space-between; background-color: rgba(255, 255, 255, 0.568); color: #000; font-size: large;">
+<body>
+
+    <!-- //header -->
+    <div id="header">
         <div class="left" style="display: flex;">
             <p class="barText" style="margin-left: 16px; font-style:normal; font-weight: bold;">
                 OLD OS
             </p>
-            
-            <p class="barText" style="margin-left: 15px; font-style: italic; color:indigo;">
+
+            <p class="barText btn" id="deskBtn">
                 Desktop
             </p>
         </div>
         <div class="center" style="display: flex;">
             <p class="barText" id="emojiSpan" style="margin-right: 2px;">
-                
+
             </p>
-            <p class="barText" id="quoteSpan" style="font-size: small; margin-left: 2px;">
-                
+            <p class="barText" id="quoteSpan" style=" margin-left: 2px;">
+
             </p>
         </div>
 
-        <p class="barText" style="margin-right: 16px; font-weight: bold; font-style: normal;" id="timeSpan">
+        <p class="barText" id="timeSpan">
             22-08-2026 14:22
         </p>
-    </div>
-    <div
-        style="border: solid; width: 350px; border-radius: 12px; padding: 15px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background-color: aliceblue; background-image: url(windowBg.jpg); background-position: 50%;">
-        <h1
-            style="margin: 4px; padding: 5px; background-color: #000; color: #fff; font-family:'Courier New', Courier, monospace;">
-            oldOs</h1>
-        <h2>The os where everything is historic!</h2>
-        <img src="OldOsKeeper.png"
-            style="border-radius: 75%; border-style:dashed; border-color: black; border-width: 2px; margin: 2px; height: 84px;"
-            alt="" srcset="">
-        <br>
-        <marquee behavior="alternate" direction=""
-            style="color: brown; background-color: beige; padding: 5px; margin: 2px; font-size: x-large;">
-            Enjoy your stay at the oldOs: Vintage, ageless and Beautiful!</marquee>
-    </div>
-    <script>
-        console.log("working");
-        function updateTime(){
-            var currentTime = new Date().toLocaleString();
-        var timeTest = document.querySelector("#timeSpan");
-        timeTest.innerHTML = currentTime;
-        }
-        setInterval(updateTime,1000);
 
-        const quotePlace = document.getElementById("quoteSpan");
-        const emojiPlace = document.getElementById("emojiSpan");
-        async function getEmoQuo() {
-            const quoteResponse = await fetch("https://dummyjson.com/quotes/random");
-            const quoteData = await quoteResponse.json();
-            console.log(quoteData);
-            console.log(quoteResponse);
-            const response = await fetch("https://api.emojisworld.fr/v1/random?&limit=1");
-            const data = await response.json();
-            const emoji = data.results[0].emoji;
-            quotePlace.innerHTML=quoteData.quote+" - "+quoteData.author;
-            emojiPlace.innerHTML = emoji;
-        }
-        getEmoQuo();
-    </script>
+    </div>
+
+    <!-- //window -->
+    <div id="firstWindow" class="slide">
+        <div id="firstWindowHeader">
+            <p class="windowName"></p>
+            <p class="windowName">
+                Welcome!
+            </p>
+            <img class="btn" id="closeBtn" src="osAssets/close.png" alt="" srcset="">
+        </div>
+        <h1 id="firstWindowHeading">oldOs</h1>
+        <img id="imgKeeper" src="osAssets/OldOsKeeper.png" alt="" srcset="">
+        <h2>The os where everything is historic!</h2>
+        <marquee behavior="alternate" direction="">Enjoy your stay at the oldOs: Vintage, ageless and Beautiful!
+        </marquee>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
