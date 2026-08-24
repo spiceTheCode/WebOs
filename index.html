@@ -18,7 +18,7 @@
             </p>
 
             <p class="barText btn" id="deskBtn">
-                Desktop
+                About!
             </p>
         </div>
         <div class="center" style="display: flex;">
@@ -36,14 +36,51 @@
 
     </div>
 
+    <!-- appscreen -->
+    <div id="desktop">
+        <div id="noteBtn" class="btn">
+            <img id="ledger" src="osAssets/ledgerIcon.png" alt="" srcset="">
+            <p class="appName" id="ledgerTag">Ledger</p>
+        </div>
+    </div>
+
     <!-- //window -->
+    <div class="slide" id="ledgerSlide">
+        <div id="ledgerSlideHeader" class="slideHeader">
+            <p class="windowName"></p>
+            <p class="windowName">
+                Ledger!
+            </p>
+            <img class="btn closeBtn" id="closeLedgerSlideBtn" src="osAssets/close.png" alt="" srcset="">
+        </div>
+        <div id="ledgerSlideContent">
+            <table id="ledgerTable">
+                <tr>
+                    <th>What Thee Called?</th>
+                    <th>Where Ye From?</th>
+                    <th>When Thou Hast Come?</th>
+                    <th>When Thou Shall Depart?</th>
+                    <th>Departed?</th>
+                </tr>
+                <tr>
+                    <td>Teerth Sharma</td>
+                    <td>Far East</td>
+                    <td>3rd Jullius, 1879</td>
+                    <td>4th Jullius, 1879</td>
+                    <td><p class="btn departBtn" onclick="depart(this)">Aye</p></td>
+                </tr>
+            </table>
+            <p class="btn" id="addEntryBtn" onclick="addGuest()">Add Entry</p>
+        </div>
+    </div>
+
     <div id="firstWindow" class="slide">
-        <div id="firstWindowHeader">
+        <div id="firstWindowHeader" class="slideHeader">
             <p class="windowName"></p>
             <p class="windowName">
                 Welcome!
             </p>
-            <img class="btn" id="closeBtn" src="osAssets/close.png" alt="" srcset="">
+            <img class="btn closeBtn" id="closeFirstSlideBtn" src="osAssets/close.png" alt="" srcset="">
         </div>
         <h1 id="firstWindowHeading">oldOs</h1>
         <img id="imgKeeper" src="osAssets/OldOsKeeper.png" alt="" srcset="">
