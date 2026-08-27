@@ -35,6 +35,9 @@
     text-align: center;
 }
 
+#firstWindow{
+    z-index: 0;
+}
 
 .slide {
     border: solid;
@@ -54,9 +57,10 @@
 .btn {
     cursor: pointer;
 }
-
-.slideHeader {
+.movable{
     cursor: move;
+}
+.slideHeader {
     display: flex;
     justify-content: space-between;
     margin-top: 0;
@@ -106,24 +110,82 @@ marquee {
 
 .closeBtn {
     height: 30px;
+
+}
+
+.moveUp{
+    transform: translateY(-100vh);
+    transition: transform 2s ease-in-out;
 }
 
 body {
+    /* backdrop-filter: blur(2px); */
+    overflow: hidden;
+    /* position: relative; */
     background-color: burlywood;
     font-family: 'Caslon Antique', monospace;
     font-weight: normal;
     font-style: normal;
     background-size: cover;
     height: 100vh;
-    background-image: url(osAssets/backgeound.jpg);
+    background-image: url(osAssets/backgeound.png);
+}
+
+.lock{
+    position: relative;
+}
+
+#lockTime{
+    top: -12%;
+    left: 44.5%;
+    font-size: 122px;
+}
+
+
+
+#lockBranding{
+    top: -35%;
+    left: 44.5%;
+    font-size: 30px;
+    letter-spacing: 15px;
+}
+
+#lockText{
+    top: 13%;
+    left: 32%;
+    font-size: 50px;
+    letter-spacing: 10px;
+    padding: 14px;
+    border: solid;
+    width: fit-content;
+    border-radius: 49px;
+    padding-left: 23px;
+    background-color: rgb(255 255 255 / 63%);
+}
+
+.lockScreen{
+    /* visibility: hidden; */
+    position: absolute;
+    background: url(osAssets/lockScreenImg.png) no-repeat;
+    background-size: 100%;
+    width: 100vw;
+    height: 100vh;
+    top: 0%;
+    left: 0%;
+    bottom: 0%;
+    right: 0%;
+    position: fixed;
+    z-index: 999999;
 }
 
 #header {
+    margin-top: 25px;
     border-radius: 25px;
     display: flex;
     justify-content: space-between;
     background-color: rgba(255, 255, 255, 0.568);
-    color: #000;
+    border: solid #FFD700;
+    background: url(osAssets/headerBg.jpg);
 }
 
 .appName{
@@ -133,6 +195,13 @@ body {
 }
 
 #ledger{
+    height: 120px;
+    border-radius: 25%;
+    border: 15px;
+    border-color:white;
+}
+
+#clockImg{
     height: 120px;
     border-radius: 25%;
     border: 15px;
@@ -186,7 +255,7 @@ th{
     border: solid;
 }
 
-#noteBtn{
+.appScreenIcon{
     width: 100px;
     padding: 5px;
     /* display: flex; */
@@ -215,6 +284,51 @@ th{
     font-style: normal;
 }
 
+
 .selected{
     filter: grayscale(100%);
+}
+
+/* //clocks */
+
+#clockSlide{
+    left: 1317px;
+    top: 390px;
+    visibility: hidden;
+}
+
+#clock{
+    position: relative;
+    margin: auto;
+    margin-top: 15px;
+    width: 15vw;
+    height: 34.2vw;
+    background:url(osAssets/clockAssets/clock.png) no-repeat;
+    background-size: 100%;
+}
+
+#hour, #minute{
+    position: absolute;
+    background-color: black;
+    border-radius: 5px;
+}
+
+#hour{
+    transform-origin: 54% 85%;
+    background: url(osAssets/clockAssets/hour.png) no-repeat;
+    height: 7%;
+    width: 6%;
+    left: 42.99%;
+    top: 17.7%;
+    background-size: 100%;
+}
+
+#minute{
+    transform-origin: 25% 49%;
+    background: url(osAssets/clockAssets/minutes.png) no-repeat;
+    height: 14%;
+    width: 7%;
+    left: 44.9%;
+    top: 16.7%;
+    background-size: 42%;
 }

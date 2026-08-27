@@ -1,12 +1,20 @@
 console.log("working");
 
+const timeTest = document.querySelector("#timeSpan");
+const lockTimeTest = document.querySelector("#lockTime");
 const header = document.getElementById("header");
+const lockScreen = document.getElementById("lockScreen");
 const closeFirstSlideBtn = document.getElementById("closeFirstSlideBtn");
 const closeLedgerSlideBtn = document.getElementById("closeLedgerSlideBtn");
+const closeClockSlideBtn = document.getElementById("closeClockSlideBtn");
 const desktopBtn = document.getElementById("deskBtn");
 const ledgerBtn = document.getElementById("noteBtn");
+const clockBtn = document.getElementById("clockBtn");
 const firstWindow = document.getElementById("firstWindow");
 const ledgerSlide = document.getElementById("ledgerSlide");
+const clockSlide = document.getElementById("clockSlide");
+
+var selectedProp = true; 
 
 function closeWindow(element) {
     element.style.visibility="hidden";   
@@ -20,24 +28,48 @@ function openWindow(element) {
 function selectedBtn(element) {
     if (element.classList.contains("selected")) {
         element.classList.remove("selected");
-    } else {
+    } else if(selectedProp){
         element.classList.add("selected");
     }
 }
 
 closeFirstSlideBtn.addEventListener("click", ()=>closeWindow(firstWindow));
+closeClockSlideBtn.addEventListener("click", ()=>{
+    closeWindow(clockSlide)
+    selectedBtn(clockBtn);
+})
 closeLedgerSlideBtn.addEventListener("click", ()=>{
     closeWindow(ledgerSlide);
     selectedBtn(ledgerBtn);
 });
+
+
 desktopBtn.addEventListener("click", ()=>openWindow(firstWindow));
 ledgerBtn.addEventListener("click", ()=>{
     openWindow(ledgerSlide);
     selectedBtn(ledgerBtn);
 });
+clockBtn.addEventListener("click", ()=>{
+    selectedProp=true;
+    openWindow(clockSlide);
+    selectedBtn(clockBtn);
+});
+timeTest.addEventListener("click", ()=>{
+    selectedProp=false;
+    openWindow(clockSlide);
+});
 
+
+window.addEventListener("keydown",(event)=>{
+    if (event.key === "ArrowUp") {
+        lockScreen.classList.add("moveUp");
+    }
+})
+
+//drag handling
 addTopHandling(firstWindow);
 addTopHandling(ledgerSlide);
+addTopHandling(clockSlide);
 dragElement(firstWindow);
 dragElement(ledgerSlide);
 
@@ -75,13 +107,7 @@ function dragElement(elemnt) {
     }
 }
 
-function updateTime() {
-    var currentTime = new Date().toLocaleString();
-    var timeTest = document.querySelector("#timeSpan");
-    timeTest.innerHTML = currentTime;
-}
-setInterval(updateTime, 1000);
-
+//api handling
 const quotePlace = document.getElementById("quoteSpan");
 const emojiPlace = document.getElementById("emojiSpan");
 async function getEmoQuo() {
@@ -134,3 +160,29 @@ function addGuest() {
     newRow.insertCell(3).innerHTML=exit;
     newRow.insertCell(4).innerHTML='<p class="btn departBtn" onclick="depart(this)">Aye</p>';
 }
+
+//clock app logic
+var htime=0;
+var mtime=0;
+var hrotation=0;
+var mrotation=0;
+
+const hour=document.querySelector("#hour");
+const minute=document.querySelector("#minute");
+
+function updateTime() {
+    var date = new Date();
+    var currentTime = date.toLocaleString();
+    timeTest.innerHTML = currentTime;
+    
+    const d = new Date();
+    htime = d.getHours();
+    mtime = d.getMinutes();
+    hrotation = htime*30 + mtime/2;
+    mrotation = mtime*6;
+    
+    hour.style.transform = `rotate(${hrotation}deg)`;
+    minute.style.transform = `rotate(${mrotation}deg)`
+    lockTimeTest.innerHTML = htime+":"+mtime;
+}
+setInterval(updateTime, 1000);

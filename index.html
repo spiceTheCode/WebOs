@@ -4,17 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OLDOS</title>
+    <title>OLD//OS</title>
+    <link rel="shortcut icon" href="osAssets/clock.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="lockScreen" id="lockScreen">
+        <p id="lockTime" class="lock">
+            14:22
+        </p>
+        <span id="lockBranding" class="lock">OLD//OS</span>
+        <p id="lockText" class="lock">
+            Press The Up Button
+        </p>
+    </div>
 
     <!-- //header -->
     <div id="header">
         <div class="left" style="display: flex;">
             <p class="barText" style="margin-left: 16px; font-style:normal; font-weight: bold;">
-                OLD OS
+                OLD//OS
             </p>
 
             <p class="barText btn" id="deskBtn">
@@ -30,7 +40,7 @@
             </p>
         </div>
 
-        <p class="barText" id="timeSpan">
+        <p class="barText btn" id="timeSpan">
             22-08-2026 14:22
         </p>
 
@@ -38,15 +48,19 @@
 
     <!-- appscreen -->
     <div id="desktop">
-        <div id="noteBtn" class="btn">
+        <div id="noteBtn" class="btn appScreenIcon">
             <img id="ledger" src="osAssets/ledgerIcon.png" alt="" srcset="">
             <p class="appName" id="ledgerTag">Ledger</p>
+        </div>
+        <div id="clockBtn" class="btn appScreenIcon">
+            <img id="clockImg" src="osAssets/clock.png" alt="" srcset="">
+            <p class="appName" id="clockTag">Clock</p>
         </div>
     </div>
 
     <!-- //window -->
     <div class="slide" id="ledgerSlide">
-        <div id="ledgerSlideHeader" class="slideHeader">
+        <div id="ledgerSlideHeader" class="slideHeader movable">
             <p class="windowName"></p>
             <p class="windowName">
                 Ledger!
@@ -67,7 +81,9 @@
                     <td>Far East</td>
                     <td>3rd Jullius, 1879</td>
                     <td>4th Jullius, 1879</td>
-                    <td><p class="btn departBtn" onclick="depart(this)">Aye</p></td>
+                    <td>
+                        <p class="btn departBtn" onclick="depart(this)">Aye</p>
+                    </td>
                 </tr>
             </table>
             <p class="btn" id="addEntryBtn" onclick="addGuest()">Add Entry</p>
@@ -75,18 +91,32 @@
     </div>
 
     <div id="firstWindow" class="slide">
-        <div id="firstWindowHeader" class="slideHeader">
+        <div id="firstWindowHeader" class="slideHeader movable">
             <p class="windowName"></p>
             <p class="windowName">
                 Welcome!
             </p>
             <img class="btn closeBtn" id="closeFirstSlideBtn" src="osAssets/close.png" alt="" srcset="">
         </div>
-        <h1 id="firstWindowHeading">oldOs</h1>
+        <h1 id="firstWindowHeading">OLD//OS</h1>
         <img id="imgKeeper" src="osAssets/OldOsKeeper.png" alt="" srcset="">
         <h2>The os where everything is historic!</h2>
         <marquee behavior="alternate" direction="">Enjoy your stay at the oldOs: Vintage, ageless and Beautiful!
         </marquee>
+    </div>
+
+    <div id="clockSlide" class="slide">
+        <div id="clockSlideHeader" class="slideHeader">
+            <p class="windowName"></p>
+            <p class="windowName">
+                Clock!
+            </p>
+            <img class="btn closeBtn" id="closeClockSlideBtn" src="osAssets/close.png" alt="" srcset="">
+        </div>
+        <div id="clock">
+            <div id="hour"></div>
+            <div id="minute"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
