@@ -50,7 +50,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: aliceblue;
-    background-image: url(osAssets/windowBg.jpg);
+    background-image: url(osAssets/windowBg.webp);
     background-position: 50%;
 }
 
@@ -128,7 +128,7 @@ body {
     font-style: normal;
     background-size: cover;
     height: 100vh;
-    background-image: url(osAssets/backgeound.png);
+    background-image: url(osAssets/backgeound_1.webp);
 }
 
 .lock{
@@ -166,7 +166,7 @@ body {
 .lockScreen{
     /* visibility: hidden; */
     position: absolute;
-    background: url(osAssets/lockScreenImg.png) no-repeat;
+    background: url(osAssets/lockScreenImg.webp) no-repeat;
     background-size: 100%;
     width: 100vw;
     height: 100vh;
@@ -185,7 +185,7 @@ body {
     justify-content: space-between;
     background-color: rgba(255, 255, 255, 0.568);
     border: solid #FFD700;
-    background: url(osAssets/headerBg.jpg);
+    background: url(osAssets/headerBg.webp);
 }
 
 .appName{
